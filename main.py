@@ -3,7 +3,8 @@ def main():
     text = get_book_text(path)
     word_count = count_words(text)
     letter_count = count_letters(text)
-    print(letter_count)
+
+    print_report(path, word_count, letter_count)
 
 
 def get_book_text(path):
@@ -27,7 +28,19 @@ def count_letters(text):
             else:
                 letter_dict[letter] = 1
 
-    return letter_dict
+    letter_list = list(letter_dict.items())
+    letter_list.sort()
+
+    return letter_list
+
+
+def print_report(path, word_count, letter_list):
+    print(f"--- Begin report of {path} ---")
+    print(f"{word_count} words found in the document")
+    for i in range(0, len(letter_list)):
+        print(
+            f"The '{letter_list[i][0]}' character was found {letter_list[i][1]} times")
+    print("--- End report ---")
 
 
 main()
