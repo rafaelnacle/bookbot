@@ -6,7 +6,7 @@ def main():
 
 
 def get_book_text(path):
-    with open("./books/frankenstein.txt", encoding="utf-8") as file:
+    with open(path, encoding="utf-8") as file:
         return file.read()
 
 
